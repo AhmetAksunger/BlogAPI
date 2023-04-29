@@ -23,7 +23,7 @@ public class Blog {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "body")
+    @Column(name = "body", length = 5000)
     private String body;
 
     @Column(name = "created_at")

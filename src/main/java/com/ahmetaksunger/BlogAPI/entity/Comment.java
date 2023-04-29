@@ -17,7 +17,7 @@ public class Comment {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "body")
+    @Column(name = "body",length = 1000)
     private String body;
 
     @ManyToOne(fetch = FetchType.LAZY)
