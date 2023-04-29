@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/blog")
+@RequestMapping("/api/blogs")
 public class BlogController {
 
     @Autowired
@@ -26,9 +26,9 @@ public class BlogController {
         return  ResponseEntity.status(HttpStatus.CREATED).body("Created successfully");
     }
 
-    @PutMapping("/")
-    public ResponseEntity<UpdateBlogRequest> update(@RequestBody UpdateBlogRequest updateBlogRequest){
-        blogService.update(updateBlogRequest);
+    @PutMapping("/{blogId}")
+    public ResponseEntity<UpdateBlogRequest> update(@RequestBody UpdateBlogRequest updateBlogRequest, @PathVariable Long blogId){
+        blogService.update(updateBlogRequest, blogId);
 
         return ResponseEntity.ok(updateBlogRequest);
     }
@@ -45,9 +45,10 @@ public class BlogController {
         return ResponseEntity.ok(blogService.getMyBlogs());
     }
 
-    @GetMapping("/all")
+    @GetMapping("/")
     public ResponseEntity<List<UserGetAllBlogsResponse>> getAllBlogs(){
         return ResponseEntity.ok(blogService.getAllBlogs());
     }
+
 
 }

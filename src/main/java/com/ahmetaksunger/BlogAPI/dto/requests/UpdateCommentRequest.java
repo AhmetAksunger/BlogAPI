@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UpdateCommentRequest {
 
-    private Long id;
     private String body;
 
 

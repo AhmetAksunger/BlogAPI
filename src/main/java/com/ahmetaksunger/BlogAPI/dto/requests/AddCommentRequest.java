@@ -9,8 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AddCommentRequest {
 
-    private Long blogId;
-
     private String body;
 
 }

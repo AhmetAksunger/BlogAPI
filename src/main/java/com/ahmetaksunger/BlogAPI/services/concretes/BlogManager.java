@@ -57,13 +57,13 @@ public class BlogManager implements BlogService {
     }
 
     @Override
-    public void update(UpdateBlogRequest updateBlogRequest) {
+    public void update(UpdateBlogRequest updateBlogRequest, Long blogId) {
 
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
 
         User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("username not found"));
 
-        Blog blog = blogRepository.findById(updateBlogRequest.getId()).orElseThrow(() -> new RuntimeException("blog was not found"));
+        Blog blog = blogRepository.findById(blogId).orElseThrow(() -> new RuntimeException("blog was not found"));
 
         Date createdAt = blog.getCreatedAt();
 
@@ -76,7 +76,7 @@ public class BlogManager implements BlogService {
         blog.setUpdatedAt(new Date());
         blog.setCreatedAt(createdAt);
         blog.setUser(user);
-
+        blog.setId(blogId);
         blogRepository.save(blog);
         logger.info("Blog(id: " + blog.getId() + ") has been updated by " + username);
     }

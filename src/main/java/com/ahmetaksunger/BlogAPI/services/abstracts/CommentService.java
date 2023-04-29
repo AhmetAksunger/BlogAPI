@@ -5,8 +5,8 @@ import com.ahmetaksunger.BlogAPI.dto.requests.UpdateCommentRequest;
 
 public interface CommentService {
 
-    void add(AddCommentRequest addCommentRequest);
-    void update(UpdateCommentRequest updateCommentRequest);
+    void add(AddCommentRequest addCommentRequest, Long blogId);
+    void update(UpdateCommentRequest updateCommentRequest, Long commentId);
 
     void delete(Long id);
 

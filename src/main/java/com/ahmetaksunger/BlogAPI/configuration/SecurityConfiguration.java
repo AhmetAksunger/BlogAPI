@@ -53,10 +53,9 @@ public class SecurityConfiguration {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/auth/**").permitAll();
-                    auth.requestMatchers("/swagger-ui/**").permitAll();
                     auth.requestMatchers("/admin/**").hasRole("ADMIN");
                     auth.requestMatchers("/user/**").hasAnyRole("ADMIN", "USER");
-                    auth.requestMatchers("/api/blog/**").hasAnyRole("ADMIN","USER");
+                    auth.requestMatchers("/api/blogs/**").hasAnyRole("ADMIN","USER");
                     auth.anyRequest().authenticated();
                 });
 

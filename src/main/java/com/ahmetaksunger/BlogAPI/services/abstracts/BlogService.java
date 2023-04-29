@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface BlogService {
     void add(AddBlogRequest addBlogRequest);
-    void update(UpdateBlogRequest updateBlogRequest);
+    void update(UpdateBlogRequest updateBlogRequest, Long blogId);
     void delete(Long id);
 
     List<UserGetMyBlogsResponse> getMyBlogs();

@@ -9,8 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class UpdateBlogRequest {
 
-    private Long id;
-
     private String title;
 
     private String body;

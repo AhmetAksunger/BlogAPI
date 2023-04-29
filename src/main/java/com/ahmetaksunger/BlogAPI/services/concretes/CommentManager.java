@@ -4,6 +4,7 @@ import com.ahmetaksunger.BlogAPI.dto.requests.AddCommentRequest;
 import com.ahmetaksunger.BlogAPI.dto.requests.UpdateCommentRequest;
 import com.ahmetaksunger.BlogAPI.entity.Comment;
 import com.ahmetaksunger.BlogAPI.entity.User;
+import com.ahmetaksunger.BlogAPI.repository.BlogRepository;
 import com.ahmetaksunger.BlogAPI.repository.CommentRepository;
 import com.ahmetaksunger.BlogAPI.repository.UserRepository;
 import com.ahmetaksunger.BlogAPI.services.abstracts.CommentService;
@@ -27,16 +28,18 @@ public class CommentManager implements CommentService {
     private ModelMapperService mapperService;
     private CommentRepository commentRepository;
     private UserRepository userRepository;
+    private BlogRepository blogRepository;
 
     @Autowired
-    public CommentManager(ModelMapperService mapperService, CommentRepository commentRepository, UserRepository userRepository) {
+    public CommentManager(ModelMapperService mapperService, CommentRepository commentRepository, UserRepository userRepository, BlogRepository blogRepository) {
         this.mapperService = mapperService;
         this.commentRepository = commentRepository;
         this.userRepository = userRepository;
+        this.blogRepository = blogRepository;
     }
 
     @Override
-    public void add(AddCommentRequest addCommentRequest) {
+    public void add(AddCommentRequest addCommentRequest, Long blogId) {
 
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
 
@@ -44,21 +47,26 @@ public class CommentManager implements CommentService {
 
         Comment comment = mapperService.forRequest().map(addCommentRequest,Comment.class);
 
+        comment.setBlog(blogRepository.findById(blogId).orElseThrow());
         comment.setUser(user);
 
         var c = commentRepository.save(comment);
 
-        logger.info(username + " has commented(id: " + c.getId() + ") on the blog(id: " + addCommentRequest.getBlogId() + ")");
+        logger.info(username + " has commented(id: " + c.getId() + ") on the blog(id: " + c.getBlog().getId() + ")");
     }
 
     @Override
-    public void update(UpdateCommentRequest updateCommentRequest) {
+    public void update(UpdateCommentRequest updateCommentRequest, Long commentId) {
 
         String username = SecurityContextHolder.getContext().getAuthentication().getName();
 
         User user = userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("username not found"));
 
-        Comment comment = commentRepository.findById(updateCommentRequest.getId()).orElseThrow(() -> new RuntimeException("Comment was not found"));
+        Comment comment = commentRepository.findById(commentId).orElseThrow(() -> new RuntimeException("Comment was not found"));
+
+        if(!comment.getUser().equals(user)){
+            throw new RuntimeException("comment was not found");
+        }
 
         var blog = comment.getBlog();
 
@@ -66,7 +74,7 @@ public class CommentManager implements CommentService {
 
         comment.setUser(user);
         comment.setBlog(blog);
-
+        comment.setId(commentId);
         commentRepository.save(comment);
 
         logger.info(username + " has edited their comment(id: " + comment.getId() + ") on the blog(id: " + blog.getId() + ")");

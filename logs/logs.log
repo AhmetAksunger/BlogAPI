@@ -3,3 +3,11 @@
 29-04-2023 19:29:03 [INFO ] - (CommentManager.java:51) | ahmet has commented(id: 5) on the blog(id: 4)
 29-04-2023 19:29:55 [INFO ] - (CommentManager.java:72) | ahmet has edited their comment(id: 2) on the blog(id: 5)
 29-04-2023 19:30:13 [INFO ] - (CommentManager.java:89) | ahmet has deleted their comment(id: 2) on the blog(id: 5)
+29-04-2023 21:19:04 [INFO ] - (CommentManager.java:55) | ahmet has commented(id: 6) on the blog(id: 5)
+29-04-2023 21:20:43 [INFO ] - (CommentManager.java:80) | ahmet has edited their comment(id: 7) on the blog(id: 5)
+29-04-2023 21:22:32 [INFO ] - (CommentManager.java:80) | ahmet has edited their comment(id: 6) on the blog(id: 5)
+29-04-2023 21:22:44 [INFO ] - (CommentManager.java:80) | ahmet has edited their comment(id: 6) on the blog(id: 5)
+29-04-2023 21:22:56 [INFO ] - (CommentManager.java:80) | ahmet has edited their comment(id: 6) on the blog(id: 5)
+29-04-2023 21:24:07 [INFO ] - (CommentManager.java:55) | admin has commented(id: 8) on the blog(id: 5)
+29-04-2023 21:31:41 [INFO ] - (BlogManager.java:81) | Blog(id: 6) has been updated by ahmet
+29-04-2023 21:32:52 [INFO ] - (BlogManager.java:81) | Blog(id: 5) has been updated by ahmet

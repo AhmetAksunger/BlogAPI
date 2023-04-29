@@ -9,22 +9,22 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/comment")
+@RequestMapping("/api/blogs/{blogId}/comments")
 public class CommentController {
 
     @Autowired
     private CommentService commentService;
 
     @PostMapping("/")
-    public ResponseEntity<String> add(@RequestBody AddCommentRequest addCommentRequest){
-        commentService.add(addCommentRequest);
+    public ResponseEntity<String> add(@RequestBody AddCommentRequest addCommentRequest, @PathVariable Long blogId){
+        commentService.add(addCommentRequest,blogId);
 
         return ResponseEntity.status(HttpStatus.CREATED).body("Created successfully");
     }
 
-    @PutMapping("/")
-    public ResponseEntity<UpdateCommentRequest> update(@RequestBody UpdateCommentRequest updateCommentRequest){
-        commentService.update(updateCommentRequest);
+    @PutMapping("/{commentId}")
+    public ResponseEntity<UpdateCommentRequest> update(@RequestBody UpdateCommentRequest updateCommentRequest, @PathVariable Long commentId){
+        commentService.update(updateCommentRequest,commentId);
 
         return ResponseEntity.ok(updateCommentRequest);
     }
