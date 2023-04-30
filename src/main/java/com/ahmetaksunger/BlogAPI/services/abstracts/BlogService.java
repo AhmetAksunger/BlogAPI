@@ -17,7 +17,7 @@ public interface BlogService {
 
     List<UserGetMyBlogsResponse> getMyBlogs();
 
-    List<UserGetAllBlogsResponse> getAllBlogs();
+    List<UserGetAllBlogsResponse> getAllBlogs(String orderByField);
 
     GetBlogByIdResponse getBlogById(Long blogId);
 

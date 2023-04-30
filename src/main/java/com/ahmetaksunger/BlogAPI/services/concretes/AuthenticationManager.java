@@ -8,6 +8,7 @@ import com.ahmetaksunger.BlogAPI.entity.Role;
 import com.ahmetaksunger.BlogAPI.entity.User;
 import com.ahmetaksunger.BlogAPI.repository.RoleRepository;
 import com.ahmetaksunger.BlogAPI.repository.UserRepository;
+import com.ahmetaksunger.BlogAPI.services.rules.UserRules;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -36,7 +37,18 @@ public class AuthenticationManager {
 
     @Autowired
     private TokenManager tokenService;
+
+    @Autowired
+    private UserRules rules;
+
     public User registerUser(String username, String password,String email,int age){
+
+        //Rules
+        rules.isUsernameValid(username);
+        rules.isPasswordValid(password);
+        rules.isEmailValid(email);
+        rules.checkIfEmailExists(email);
+        rules.isAgeValid(age);
 
         String encodedPassword = passwordEncoder.encode(password);
         Role userRole = roleRepository.findByAuthority("USER").get();

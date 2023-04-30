@@ -41,14 +41,12 @@ public class BlogController {
         return ResponseEntity.ok("Deleted successfully");
     }
 
-    @GetMapping("/my-blogs")
-    public ResponseEntity<List<UserGetMyBlogsResponse>> getBlogs(){
-        return ResponseEntity.ok(blogService.getMyBlogs());
-    }
-
-    @GetMapping("/")
-    public ResponseEntity<List<UserGetAllBlogsResponse>> getAllBlogs(){
-        return ResponseEntity.ok(blogService.getAllBlogs());
+    @GetMapping("/") //?orderBy={title,createdAt,updatedAt}
+    public ResponseEntity<List<UserGetAllBlogsResponse>> getAllBlogs(@RequestParam(value = "orderBy",required = false) String orderByField){
+        if(orderByField == null){
+            orderByField = "createdAt";
+        }
+        return ResponseEntity.ok(blogService.getAllBlogs(orderByField));
     }
 
     @GetMapping("/{blogId}")

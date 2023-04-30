@@ -32,7 +32,7 @@ public class BlogApiApplication {
 			Set<Role> roles = new HashSet<>();
 			roles.add(adminRole);
 
-			User admin = new User(1, "admin", passwordEncode.encode("password"), roles,"",0);
+			User admin = new User(1, "admin", passwordEncode.encode("password"), roles,"admin@gmail.com",99);
 
 			userRepository.save(admin);
 		};
