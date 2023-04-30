@@ -9,6 +9,8 @@ import com.ahmetaksunger.BlogAPI.entity.User;
 import com.ahmetaksunger.BlogAPI.repository.RoleRepository;
 import com.ahmetaksunger.BlogAPI.repository.UserRepository;
 import com.ahmetaksunger.BlogAPI.services.rules.UserRules;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -22,7 +24,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class AuthenticationManager {
 
-	
+    private static final Logger logger = LogManager.getLogger(AuthenticationManager.class);
+
     @Autowired
     private UserRepository userRepository;
 
@@ -57,7 +60,11 @@ public class AuthenticationManager {
 
         authorities.add(userRole);
 
-        return userRepository.save(new User(0L,username,encodedPassword,authorities,email,age));
+        User u = userRepository.save(new User(0L,username,encodedPassword,authorities,email,age));
+
+        logger.info(u.getUsername() +"(id: " + u.getId() + ") has registered");
+
+        return u;
     }
 
     public LoginUserResponse loginUser(String username, String password) throws RuntimeException {

@@ -1,6 +1,9 @@
-30-04-2023 20:33:38 [WARN ] - (BlogManager.java:68) | [Role(id=1, authority=ADMIN)]
-30-04-2023 20:36:01 [WARN ] - (BlogManager.java:71) | true
-30-04-2023 20:36:01 [WARN ] - (BlogManager.java:72) | [Role(id=1, authority=ADMIN)]
-30-04-2023 20:36:38 [WARN ] - (BlogManager.java:71) | false
-30-04-2023 20:36:38 [WARN ] - (BlogManager.java:72) | [Role(id=2, authority=USER)]
-30-04-2023 20:36:38 [INFO ] - (BlogManager.java:85) | Blog(id: 7) has been updated by john
+01-05-2023 00:30:40 [INFO ] - (AuthenticationManager.java:65) | mark12(id: 5) has registered
+01-05-2023 00:33:32 [INFO ] - (BlogManager.java:66) | Blog(id: 8) has been added by mark12
+01-05-2023 00:35:18 [INFO ] - (CommentManager.java:68) | ahmet has commented(id: 11) on the blog(id: 8)
+01-05-2023 00:35:51 [INFO ] - (CommentManager.java:68) | john has commented(id: 12) on the blog(id: 8)
+01-05-2023 00:36:25 [INFO ] - (CommentManager.java:68) | admin has commented(id: 13) on the blog(id: 8)
+01-05-2023 00:39:39 [INFO ] - (BlogManager.java:94) | Blog(id: 7) has been updated by john
+01-05-2023 00:40:45 [INFO ] - (CommentManager.java:95) | john has edited their comment(id: 12) on the blog(id: 8)
+01-05-2023 00:41:12 [INFO ] - (CommentManager.java:68) | admin has commented(id: 14) on the blog(id: 8)
+01-05-2023 00:42:06 [INFO ] - (CommentManager.java:112) | admin has deleted their comment(id: 14) on the blog(id: 8)
