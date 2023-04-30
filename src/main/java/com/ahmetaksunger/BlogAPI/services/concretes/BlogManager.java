@@ -2,6 +2,7 @@ package com.ahmetaksunger.BlogAPI.services.concretes;
 
 import com.ahmetaksunger.BlogAPI.dto.requests.AddBlogRequest;
 import com.ahmetaksunger.BlogAPI.dto.requests.UpdateBlogRequest;
+import com.ahmetaksunger.BlogAPI.dto.responses.GetBlogByIdResponse;
 import com.ahmetaksunger.BlogAPI.dto.responses.UserGetAllBlogsResponse;
 import com.ahmetaksunger.BlogAPI.dto.responses.UserGetMyBlogsResponse;
 import com.ahmetaksunger.BlogAPI.entity.Blog;
@@ -130,6 +131,32 @@ public class BlogManager implements BlogService {
         }
 
         return responses;
+    }
+
+    @Override
+    public GetBlogByIdResponse getBlogById(Long blogId) {
+
+        Blog blog = blogRepository.findById(blogId).orElseThrow(() -> new RuntimeException("blog was not found"));
+
+        GetBlogByIdResponse response = mapperService.forResponse().map(blog,GetBlogByIdResponse.class);
+
+        return response;
+    }
+
+    @Override
+    public List<UserGetAllBlogsResponse> getBlogsByTitleLike(String title) {
+
+        List<Blog> blogs = blogRepository.findAllByTitleContainingIgnoreCase(title);
+
+        List<UserGetAllBlogsResponse> responses = new ArrayList<UserGetAllBlogsResponse>();
+
+        for (Blog blog:blogs) {
+            UserGetAllBlogsResponse response = mapperService.forResponse().map(blog, UserGetAllBlogsResponse.class);
+            responses.add(response);
+        }
+
+        return responses;
+
     }
 
 

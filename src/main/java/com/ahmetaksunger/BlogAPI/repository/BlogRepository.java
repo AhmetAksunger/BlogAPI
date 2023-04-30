@@ -9,4 +9,9 @@ public interface BlogRepository extends JpaRepository<Blog,Long> {
 
     List<Blog> findAllByUserId(Long userId);
 
+    //IgnoreCase makes it case independent
+    List<Blog> findAllByTitleContainingIgnoreCase(String title);
+
+    List<Blog> findAllByUserUsernameContainingIgnoreCase(String username);
+
 }

@@ -2,6 +2,8 @@ package com.ahmetaksunger.BlogAPI.services.concretes;
 
 import com.ahmetaksunger.BlogAPI.dto.requests.AddCommentRequest;
 import com.ahmetaksunger.BlogAPI.dto.requests.UpdateCommentRequest;
+import com.ahmetaksunger.BlogAPI.dto.responses.GetBlogCommentsResponse;
+import com.ahmetaksunger.BlogAPI.dto.responses.GetCommentByIdResponse;
 import com.ahmetaksunger.BlogAPI.entity.Comment;
 import com.ahmetaksunger.BlogAPI.entity.User;
 import com.ahmetaksunger.BlogAPI.repository.BlogRepository;
@@ -9,15 +11,16 @@ import com.ahmetaksunger.BlogAPI.repository.CommentRepository;
 import com.ahmetaksunger.BlogAPI.repository.UserRepository;
 import com.ahmetaksunger.BlogAPI.services.abstracts.CommentService;
 import com.ahmetaksunger.BlogAPI.utils.mappers.ModelMapperService;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @Data
@@ -96,5 +99,30 @@ public class CommentManager implements CommentService {
         commentRepository.delete(comment);
         logger.info(username + " has deleted their comment(id: " + id + ") on the blog(id: " + comment.getBlog().getId()
                + ")");
+    }
+
+    @Override
+    public List<GetBlogCommentsResponse> getBlogComments(Long blogId) {
+
+        List<Comment> comments = commentRepository.findAllByBlogId(blogId);
+        List<GetBlogCommentsResponse> responses = new ArrayList<GetBlogCommentsResponse>();
+
+        for (Comment comment:comments) {
+            GetBlogCommentsResponse response = mapperService.forResponse().map(comment, GetBlogCommentsResponse.class);
+            responses.add(response);
+        }
+
+        return responses;
+    }
+
+    @Override
+    public GetCommentByIdResponse getCommentById(Long commentId) {
+
+        Comment comment = commentRepository.findById(commentId).orElseThrow(()->new RuntimeException("comment was not found"));
+
+        GetCommentByIdResponse response = mapperService.forResponse().map(comment, GetCommentByIdResponse.class);
+
+        return response;
+
     }
 }

@@ -11,3 +11,30 @@
 29-04-2023 21:24:07 [INFO ] - (CommentManager.java:55) | admin has commented(id: 8) on the blog(id: 5)
 29-04-2023 21:31:41 [INFO ] - (BlogManager.java:81) | Blog(id: 6) has been updated by ahmet
 29-04-2023 21:32:52 [INFO ] - (BlogManager.java:81) | Blog(id: 5) has been updated by ahmet
+30-04-2023 03:21:49 [FATAL] - (BlogManager.java:151) | in the blog manager
+30-04-2023 03:21:49 [FATAL] - (BlogManager.java:152) | []
+30-04-2023 03:21:49 [FATAL] - (BlogManager.java:153) | "Ahmet's Blog"
+30-04-2023 03:21:49 [FATAL] - (BlogManager.java:162) | []
+30-04-2023 03:22:11 [FATAL] - (BlogManager.java:151) | in the blog manager
+30-04-2023 03:22:11 [FATAL] - (BlogManager.java:152) | []
+30-04-2023 03:22:11 [FATAL] - (BlogManager.java:153) | Ahmet's Blog
+30-04-2023 03:22:11 [FATAL] - (BlogManager.java:162) | []
+30-04-2023 03:22:56 [FATAL] - (BlogManager.java:151) | in the blog manager
+30-04-2023 03:22:56 [FATAL] - (BlogManager.java:153) | Ahmet's Blog
+30-04-2023 03:22:56 [FATAL] - (BlogManager.java:162) | [UserGetAllBlogsResponse(title=Ahmet's Blog, body=Hey, this is my blog about Log4j2. Log4j2 is a logging framework that is mostly used in back-end services. It's the most popular logging framework. Last year, unfortunately there was a critical loop-hole was found in this framework that led all of companies to double-check and re-build their logging systems!!., username=ahmet, commentCount=0, createdAt=2023-04-29 17:50:12.655)]
+30-04-2023 03:23:00 [FATAL] - (BlogManager.java:151) | in the blog manager
+30-04-2023 03:23:00 [FATAL] - (BlogManager.java:153) | Ahmet's
+30-04-2023 03:23:00 [FATAL] - (BlogManager.java:162) | [UserGetAllBlogsResponse(title=Ahmet's Blog, body=Hey, this is my blog about Log4j2. Log4j2 is a logging framework that is mostly used in back-end services. It's the most popular logging framework. Last year, unfortunately there was a critical loop-hole was found in this framework that led all of companies to double-check and re-build their logging systems!!., username=ahmet, commentCount=0, createdAt=2023-04-29 17:50:12.655)]
+30-04-2023 03:23:06 [FATAL] - (BlogManager.java:151) | in the blog manager
+30-04-2023 03:23:06 [FATAL] - (BlogManager.java:153) | aHmet
+30-04-2023 03:23:06 [FATAL] - (BlogManager.java:162) | [UserGetAllBlogsResponse(title=Ahmet's Blog, body=Hey, this is my blog about Log4j2. Log4j2 is a logging framework that is mostly used in back-end services. It's the most popular logging framework. Last year, unfortunately there was a critical loop-hole was found in this framework that led all of companies to double-check and re-build their logging systems!!., username=ahmet, commentCount=0, createdAt=2023-04-29 17:50:12.655)]
+30-04-2023 03:23:08 [FATAL] - (BlogManager.java:151) | in the blog manager
+30-04-2023 03:23:08 [FATAL] - (BlogManager.java:152) | []
+30-04-2023 03:23:08 [FATAL] - (BlogManager.java:153) | aHmetqwe
+30-04-2023 03:23:08 [FATAL] - (BlogManager.java:162) | []
+30-04-2023 03:23:13 [FATAL] - (BlogManager.java:151) | in the blog manager
+30-04-2023 03:23:13 [FATAL] - (BlogManager.java:153) | my
+30-04-2023 03:23:13 [FATAL] - (BlogManager.java:162) | [UserGetAllBlogsResponse(title=My First Blog, body=Hey, this is my first blog and I'm really excited to release it!, username=admin, commentCount=0, createdAt=2023-04-29 17:42:41.628)]
+30-04-2023 03:23:17 [FATAL] - (BlogManager.java:151) | in the blog manager
+30-04-2023 03:23:17 [FATAL] - (BlogManager.java:153) | first
+30-04-2023 03:23:17 [FATAL] - (BlogManager.java:162) | [UserGetAllBlogsResponse(title=My First Blog, body=Hey, this is my first blog and I'm really excited to release it!, username=admin, commentCount=0, createdAt=2023-04-29 17:42:41.628)]

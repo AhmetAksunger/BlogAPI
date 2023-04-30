@@ -2,6 +2,7 @@ package com.ahmetaksunger.BlogAPI.controllers;
 
 import com.ahmetaksunger.BlogAPI.dto.requests.AddBlogRequest;
 import com.ahmetaksunger.BlogAPI.dto.requests.UpdateBlogRequest;
+import com.ahmetaksunger.BlogAPI.dto.responses.GetBlogByIdResponse;
 import com.ahmetaksunger.BlogAPI.dto.responses.UserGetAllBlogsResponse;
 import com.ahmetaksunger.BlogAPI.dto.responses.UserGetMyBlogsResponse;
 import com.ahmetaksunger.BlogAPI.services.abstracts.BlogService;
@@ -48,6 +49,16 @@ public class BlogController {
     @GetMapping("/")
     public ResponseEntity<List<UserGetAllBlogsResponse>> getAllBlogs(){
         return ResponseEntity.ok(blogService.getAllBlogs());
+    }
+
+    @GetMapping("/{blogId}")
+    public ResponseEntity<GetBlogByIdResponse> getBlogById(@PathVariable Long blogId){
+        return ResponseEntity.ok(blogService.getBlogById(blogId));
+    }
+
+    @GetMapping("/search") //search?title="test"
+    public ResponseEntity<List<UserGetAllBlogsResponse>> getBlogsByTitleLike(@RequestParam(value = "title", required = false) String title){
+        return ResponseEntity.ok(blogService.getBlogsByTitleLike(title));
     }
 
 
