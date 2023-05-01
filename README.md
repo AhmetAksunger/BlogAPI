@@ -11,11 +11,6 @@
     <a href="https://github.com/AhmetAksunger/BlogAPI"><strong>Explore the docs »</strong></a>
     <br/>
     <br/>
-    <a href="https://github.com/AhmetAksunger/BlogAPI">View Demo</a>
-    .
-    <a href="https://github.com/AhmetAksunger/BlogAPI/issues">Report Bug</a>
-    .
-    <a href="https://github.com/AhmetAksunger/BlogAPI/issues">Request Feature</a>
   </p>
 </p>
 
@@ -419,6 +414,24 @@ Authorization: Bearer <token>
 ]
 ```
 
+### Logs
+**Example Logs**
+```txt
+01-05-2023 00:30:40 [INFO ] - (AuthenticationManager.java:65) | mark12(id: 5) has registered
+01-05-2023 00:33:32 [INFO ] - (BlogManager.java:66) | Blog(id: 8) has been added by mark12
+01-05-2023 00:35:18 [INFO ] - (CommentManager.java:68) | ahmet has commented(id: 11) on the blog(id: 8)
+01-05-2023 00:35:51 [INFO ] - (CommentManager.java:68) | john has commented(id: 12) on the blog(id: 8)
+01-05-2023 00:36:25 [INFO ] - (CommentManager.java:68) | admin has commented(id: 13) on the blog(id: 8)
+01-05-2023 00:39:39 [INFO ] - (BlogManager.java:94) | Blog(id: 7) has been updated by john
+01-05-2023 00:40:45 [INFO ] - (CommentManager.java:95) | john has edited their comment(id: 12) on the blog(id: 8)
+01-05-2023 00:41:12 [INFO ] - (CommentManager.java:68) | admin has commented(id: 14) on the blog(id: 8)
+01-05-2023 00:42:06 [INFO ] - (CommentManager.java:112) | admin has deleted their comment(id: 14) on the blog(id: 8)
+01-05-2023 01:14:09 [INFO ] - (AuthenticationManager.java:65) | mark123(id: 6) has registered
+01-05-2023 02:33:21 [INFO ] - (AuthenticationManager.java:65) | johndoe(id: 7) has registered
+```
+
+## SQL Template
+![sql template](https://user-images.githubusercontent.com/116587797/235382486-b83f07d7-8cb2-4772-bd4e-301f31a2549c.png)
 
 ## Built With
 
